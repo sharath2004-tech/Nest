@@ -1,0 +1,13 @@
+{% if NEWS_ITEMS %}
+*:newspaper: Latest OWASP news:*{{ NL }}
+{%- for item in NEWS_ITEMS %}
+  • *<{{ item.url }}|{{ item.title }}>* by {{ item.author }}{{ NL }}
+{%- endfor %}
+{{ NL }}Please visit <{{ NEWS_PAGE_URL }}|{{ NEWS_PAGE_NAME }}> page for more information.{{ NL }}
+{%- else -%}
+:warning: *Failed to fetch OWASP news. Please try again later.*
+{%- endif -%}
+
+{{ SECTION_BREAK }}
+
+{{ FEEDBACK_SHARING_INVITE | safe }}

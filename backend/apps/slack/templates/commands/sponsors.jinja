@@ -1,0 +1,18 @@
+{%- if SPONSORS %}
+  *OWASP Sponsors:*{{ NL }}{{ NL }}{{ SECTION_BREAK }}
+{% for sponsor in SPONSORS -%}
+  {%- if sponsor.url -%}
+    *{{ loop.index }}. <{{ sponsor.url }}|{{ sponsor.name }}>*{{ NL }}
+  {%- else -%}
+    *{{ loop.index }}. {{ sponsor.name }}*{{ NL }}
+  {%- endif -%}
+  Member Type: {{ sponsor.member_type }}
+{{ sponsor.description }}{{ NL }}{{ NL }}{{ SECTION_BREAK }}
+{%- endfor -%}
+{{ SECTION_BREAK }}{{ DIVIDER }}{{ SECTION_BREAK }}
+* Please visit the <{{ SPONSORS_PAGE_URL }}|{{ SPONSORS_PAGE_NAME }}> for more information about the sponsors*
+{{ SECTION_BREAK }}
+{{ FEEDBACK_SHARING_INVITE | safe }}
+{%- else -%}
+Failed to get OWASP sponsor data.
+{%- endif -%}

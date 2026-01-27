@@ -1,0 +1,41 @@
+{%- if CHAPTERS or PROJECTS %}
+{%- if CHAPTERS %}
+*Chapters*{{ NL }}
+{%- for chapter in CHAPTERS %}
+  {%- if chapter.idx_leaders %}
+<{{ chapter.url }}|{{ chapter.idx_name }}>:
+{%- for leader in chapter.idx_leaders %}
+  {%- if SEARCH_QUERY and (SEARCH_QUERY|lower in leader|lower) %}
+    • `{{ leader }}`
+  {%- else %}
+    • {{ leader }}
+  {%- endif %}
+{%- endfor %}
+{{ SECTION_BREAK }}
+  {%- endif %}
+{%- endfor -%}
+{{ SECTION_BREAK }}
+{%- endif %}
+{%- if PROJECTS %}
+*Projects*{{ NL }}
+{%- for project in PROJECTS %}
+  {%- if project.idx_leaders %}
+<{{ project.url }}|{{ project.idx_name }}>:
+{%- for leader in project.idx_leaders %}
+  {%- if SEARCH_QUERY and (SEARCH_QUERY|lower in leader|lower) %}
+    • `{{ leader }}`
+  {%- else %}
+    • {{ leader }}
+  {%- endif %}
+{%- endfor %}
+{{ SECTION_BREAK }}
+  {%- endif %}
+{%- endfor %}
+{%- endif %}
+{%- else %}
+*No results found for `{{ COMMAND }} {{ SEARCH_QUERY }}`*{{ NL }}
+{%- endif %}
+
+{{ SECTION_BREAK }}
+
+{{ FEEDBACK_SHARING_INVITE | safe }}
