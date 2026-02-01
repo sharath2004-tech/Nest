@@ -197,6 +197,8 @@ class TestUtils:
             ("https://...", False),  # Multiple dots
             ("https://.-", False),  # Dot and hyphen
             ("https://-.", False),  # Hyphen and dot
+            ("https://:80", False),  # Just a port, no hostname
+            ("https://user@-", False),  # User info with invalid hostname
         ],
     )
     def test_validate_url(self, url, expected):
